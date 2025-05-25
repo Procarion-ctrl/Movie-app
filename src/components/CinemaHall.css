@@ -1,0 +1,31 @@
+/* src/components/CinemaHall.css */
+.cinema-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 40px);
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #4caf50; /* зелений – вільне */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.seat.selected {
+  background-color: #2196f3; /* синій – вибране */
+}
+
+@media (max-width: 600px) {
+  .cinema-grid {
+    grid-template-columns: repeat(4, 40px);
+  }
+}
