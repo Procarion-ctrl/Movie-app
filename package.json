@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.6.1"
   }
 }
