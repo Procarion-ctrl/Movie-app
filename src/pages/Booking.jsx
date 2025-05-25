@@ -1,4 +1,5 @@
 // src/pages/Booking.jsx
+import React from "react";
 import { useParams } from 'react-router-dom';
 import { movies } from '../data/movies';
 import CinemaHall from '../components/CinemaHall';

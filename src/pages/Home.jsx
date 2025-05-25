@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React from 'react';
 import { movies } from '../data/movies';
 import MovieList from '../components/MovieList';
