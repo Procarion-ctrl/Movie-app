@@ -1,31 +1,37 @@
-/* src/components/CinemaHall.css */
-.cinema-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 40px);
+.cinema-hall {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
   justify-content: center;
 }
 
 .seat {
-  width: 40px;
-  height: 40px;
-  background-color: #4caf50; /* зелений – вільне */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
+  width: 35px;
+  height: 35px;
+  background: #ccc;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
+}
+
+.seat.booked {
+  background: red;
+  cursor: not-allowed;
 }
 
 .seat.selected {
-  background-color: #2196f3; /* синій – вибране */
+  background: green;
 }
 
 @media (max-width: 600px) {
-  .cinema-grid {
-    grid-template-columns: repeat(4, 40px);
+  .seat {
+    width: 25px;
+    height: 25px;
   }
 }

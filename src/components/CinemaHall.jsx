@@ -1,49 +1,33 @@
-// src/components/CinemaHall.jsx
-import React, { useState } from 'react';
-import './CinemaHall.css';
+// /src/components/CinemaHall.jsx
+import React from "react";
+import "./CinemaHall.css";
 
-const ROWS = 5;
-const SEATS_PER_ROW = 8;
+const rows = 5;
+const seatsPerRow = 8;
 
-const CinemaHall = () => {
-  const [selectedSeats, setSelectedSeats] = useState([]);
-
-  const toggleSeat = (row, seat) => {
-    const seatId = `${row}-${seat}`;
-    setSelectedSeats(prev =>
-      prev.includes(seatId)
-        ? prev.filter(s => s !== seatId)
-        : [...prev, seatId]
-    );
-  };
-
+export default function CinemaHall({ bookedSeats = [], selectedSeats, onSelect }) {
   return (
-    <div>
-      <div className="cinema-grid">
-        {[...Array(ROWS)].map((_, row) =>
-          [...Array(SEATS_PER_ROW)].map((_, seat) => {
-            const seatId = `${row}-${seat}`;
+    <div className="cinema-hall">
+      {Array.from({ length: rows }).map((_, rowIdx) => (
+        <div key={rowIdx} className="row">
+          {Array.from({ length: seatsPerRow }).map((_, seatIdx) => {
+            const seatId = `${rowIdx + 1}-${seatIdx + 1}`;
+            const isBooked = bookedSeats.includes(seatId);
             const isSelected = selectedSeats.includes(seatId);
 
             return (
-              <div
+              <button
                 key={seatId}
-                className={`seat ${isSelected ? 'selected' : ''}`}
-                onClick={() => toggleSeat(row, seat)}
+                className={`seat ${isBooked ? "booked" : isSelected ? "selected" : ""}`}
+                disabled={isBooked}
+                onClick={() => onSelect(seatId)}
               >
-                {seat + 1}
-              </div>
+                {seatId}
+              </button>
             );
-          })
-        )}
-      </div>
-
-      <div>
-        <h3>Обрані місця:</h3>
-        <p>{selectedSeats.join(', ') || "Немає вибраних місць"}</p>
-      </div>
+          })}
+        </div>
+      ))}
     </div>
   );
-};
-
-export default CinemaHall;
+}
